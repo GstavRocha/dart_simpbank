@@ -5,15 +5,23 @@ class ContaCorrente {
   double saldo = 30.0;
 
   // declarando métodos: dentro do parenteses ()fica os atributos;
-  void saque(double valordoSaque) {
+  bool saque(double valordoSaque) {
     // palavra reservada this.
     // print("${this.titular}: ${this.saldo}}");
     if (this.saldo > valordoSaque) {
       print("Saque autorizado");
       this.saldo -= valordoSaque;
+      return true;
     } else {
       print("Saque Negado");
+      return false;
     }
+  }
+
+  double deposito(double valordoDeposito) {
+    saldo += valordoDeposito;
+    print("Depósito concluido");
+    return this.saldo;
   }
 }
 
@@ -62,4 +70,17 @@ void main() {
   print("${amanda.titular} : ${amanda.saldo}");
   amanda.saque(20);
   print("${amanda.titular} : ${amanda.saldo}");
+  print("___TESTANDO DEPÓSITO______");
+  print("${gustavo.titular} : ${gustavo.saldo}");
+  gustavo.deposito(1000);
+  print("${gustavo.titular} : ${gustavo.saldo}");
+  print("______________________________________");
+
+  bool sucesso = gustavo.saque(6000);
+  print("$sucesso seu Saldo é :${gustavo.saldo}");
+
+  print("______________________________________");
+  print("Saldo de ${amanda.saldo}");
+  double sucesso1 = amanda.deposito(200);
+  print("$sucesso1 seu Saldo é :${amanda.saldo}");
 }
